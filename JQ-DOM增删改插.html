@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>美美のJQ-DOM增删改插</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <ul id="ul"></ul>
+    <script src="./jquery-3.1.1.js"></script>
+    <script>
+        let num = 0;
+        $('#btn').click(function () {
+            num++;
+            let $li = $('<li><span>' + num + '</span> <input n=' + num + ' style="display:none" value="' + num +
+                '" type="text"><a rm href="javascript:;">删除</a><a rn href="javascript:;">修改</a></li>');
+            $li.on('click', 'a[rm]', function () {
+                $li.remove();
+            })
+            let $txt = $li.find('input') //find类似 getElementsByTagName
+            let $span = $li.find('span')
+            $li.on('click', 'a[rn]', function () {
+                $txt.show(); //show == disiplay:block   
+                $span.hide(); //hide == display:none
+                $txt.focus(); //当元素获得焦点时，触发 focus 事件。
+                // $.txt[0].selectionEnd=$txt.val().length;   //   默认全选
+                $txt[0].selectionStart = $txt.val().length; // 光标在文字后
+            })
+            $txt.blur(function () {
+                //失去焦点的时候，如果没有内容
+                if (!$(this).val()) {
+                    //就把当前内容设置为一开始的n值
+                    $(this).val($(this).attr('n'))
+                } else {
+                    //有内容就设置内容，并且把n这个属性也改了，为了下次用
+                    $span.html($(this).val());
+                    $(this).attr('n', $(this).val());
+
+                }
+                $span.show();
+                $(this).hide();
+            })
+            $('#ul').append($li);
+        })
+    </script>
+</body>
+
+</html>

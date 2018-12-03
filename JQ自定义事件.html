@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>美美の自定义事件</title>
+</head>
+<button id="btn">点击</button>
+<button id="btn2">删除</button>
+
+<body>
+    <script src="./jquery-3.1.1.js"></script>
+    <script>
+        $('#btn').on('click', function () {
+            console.log('第一次');
+        });
+        $('#btn').on('click.2', function () {
+            console.log('第二次');
+        });
+
+        $('#btn2').on('click', function () {
+            $('#btn').off('click.2');   
+        });
+    </script>
+</body>
+
+</html>

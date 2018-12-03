@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>美美のJQ运动</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: orange;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <div id="box"></div>
+    <script src="./jquery-3.2.1.min.js"></script>
+    <script>
+        /*
+        animate()
+            jQ中的所有运动都是基于animate
+
+            hide(0)
+
+            delay(time)延迟
+
+        小技巧:
+            使用jq的运动时，可以在运动前加上stop
+        
+    */
+        $('#btn').click(function () {
+            $('#box').animate({
+                width: 300
+            }, 100).delay(1000);
+
+            $('#box').animate({
+                height: 300,
+                left: 200
+            }, 1000)
+        })
+    </script>
+</body>
+
+</html>
